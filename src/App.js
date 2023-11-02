@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { apiUrl, filterData } from "./data";
+import NavBar from "./Components/NavBar";
+import Filter from "./Components/Filter";
+import Cards from "./Components/Cards";
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(apiUrl);
+  //       const data = await res.json();
+  //     } catch (error) {
+
+  //     }
+  //   };
+  // });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Filter filterData={filterData} />
+      <Cards />
     </div>
   );
 }
