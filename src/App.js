@@ -8,25 +8,35 @@ import { toast } from "react-toastify";
 
 function App() {
   const [courses, setCourses] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  async function fetchData() {
+    setLoading(true);
+    try {
+      let response = await fetch(apiUrl);
+      let output = await response.json();
+      setCourses(output);
+    } catch (error) {
+      toast.error("something error occurd in apiUrl");
+    }
+    setLoading(false);
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(apiUrl);
-        const output = await res.json();
-        console.log(output.data); // Add this line
-        setCourses(output.data);
-      } catch (error) {
-        toast.error("Something went wrong");
-      }
-    };
     fetchData();
   }, []);
+
   return (
     <div className="App">
-      <NavBar />
-      <Filter filterData={filterData} />
-      <Cards courses={courses} />
+      <div>
+        <NavBar />
+      </div>
+      <div>
+        <Filter filterData={filterData} />
+      </div>
+      <div>
+        <Cards courses={courses} />
+      </div>
     </div>
   );
 }
