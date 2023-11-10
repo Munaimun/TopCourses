@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cards = () => {
+const Cards = ({ courses }) => {
   return <div></div>;
 };
 
