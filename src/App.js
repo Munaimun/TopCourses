@@ -2,6 +2,7 @@ import "./App.css";
 import { apiUrl, filterData } from "./data";
 import NavBar from "./Components/NavBar";
 import Filter from "./Components/Filter";
+import Spinner from "./Components/Spinner";
 import Cards from "./Components/Cards";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -15,7 +16,7 @@ function App() {
     try {
       let response = await fetch(apiUrl);
       let output = await response.json();
-      setCourses(output);
+      setCourses(output.data);
     } catch (error) {
       toast.error("something error occurd in apiUrl");
     }
@@ -27,16 +28,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="min-h-screen flex flex-col">
       <div>
         <NavBar />
       </div>
       <div>
         <Filter filterData={filterData} />
       </div>
-      <div>
-        <Cards courses={courses} />
-      </div>
+      <div>{loading ? <Spinner /> : <Cards courses={courses} />}</div>
     </div>
   );
 }
