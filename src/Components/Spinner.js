@@ -1,10 +1,11 @@
 import React from "react";
-import "./Spinner.css"; // You need to create a corresponding CSS file for styling
+import "./Spinner.css";
 
 const Spinner = () => {
   return (
-    <div className="spinner-overlay">
+    <div className="flex flex-col items-center space-y-2">
       <div className="spinner"></div>
+      <p className="tex-lg font-semibold">Loading....</p>
     </div>
   );
 };
