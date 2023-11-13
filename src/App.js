@@ -18,7 +18,7 @@ function App() {
       let output = await response.json();
       setCourses(output.data);
     } catch (error) {
-      toast.error("something error occurd in apiUrl");
+      toast.error("Network problem!!!");
     }
     setLoading(false);
   }
