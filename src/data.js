@@ -17,11 +17,7 @@ export const filterData = [
   },
   {
     id: "5",
-    title: "Business",
-  },
-  {
-    id: "6",
-    title: "Business",
+    title: "Lifestyle",
   },
 ];
 

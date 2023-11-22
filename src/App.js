@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 function App() {
   const [courses, setCourses] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState(filterData[0].title);
 
   async function fetchData() {
     setLoading(true);
@@ -33,10 +34,18 @@ function App() {
         <NavBar />
       </div>
       <div>
-        <Filter filterData={filterData} />
+        <Filter
+          filterData={filterData}
+          category={category}
+          setCategory={setCategory}
+        />
       </div>
       <div className="w-11/12 max-w-[1200px] mx-auto flex flex-wrap justify-center items-center min-h-[50vh]">
-        {loading ? <Spinner /> : <Cards courses={courses} />}
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Cards courses={courses} category={category} />
+        )}
       </div>
     </div>
   );

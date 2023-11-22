@@ -36,7 +36,11 @@ const Card = (props) => {
       </div>
       <div className="p-4">
         <p className="font-semibold text-lg leading-6">{course.title}</p>
-        <p className="mt-2">{course.description}</p>
+        <p className="mt-2">
+          {course.description.length > 100
+            ? course.description.substr(0, 100) + "...."
+            : course.description}
+        </p>
       </div>
     </div>
   );
